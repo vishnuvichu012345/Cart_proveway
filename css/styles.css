@@ -1,0 +1,307 @@
+:root {
+    --primary-color: #ff6b82;
+    --primary-hover: #0056b3;
+    --background-color: #f0f0f0;
+    --border-color: #e0e0e0;
+    --text-color: #333;
+    --text-muted: #888;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden; /* Prevent overflow from pushing the card */
+    height: 800px; /* Fixed height for the card */
+}
+
+.card-header {
+    padding: 24px 24px 0;
+}
+
+.card-content {
+    padding: 0px;
+}
+
+.title {
+    position: relative;     
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1;
+    color: var(--primary-color);
+}
+
+.title-divider {
+    position: absolute; 
+    top: 7.5%; 
+    left: 0; 
+    right: 0; 
+    height: 2px; 
+    background-color: var(--text-muted); 
+    z-index: 0; 
+}
+
+.bogo-tag {
+    position: relative; 
+    z-index: 2; 
+    background-color: white;
+    padding: 0 10px; 
+}
+
+.pricing-option {
+    border: 2px solid var(--border-color);  
+    padding-left: 56px;
+    padding-right: 56px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.pricing-option.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.pricing-options-container {
+    height: 525px; 
+    border: 2px solid var(--border-color);
+}
+
+.unit-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.radio-button {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+
+
+.pricing-option.selected .radio-button {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.current-price {
+    font-weight: bold;
+    display: block;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 12px;
+
+}
+
+
+.popular-tag {
+    position: absolute;
+    top: -12px; 
+    right: -10px; 
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 12px;
+    padding: 4px 20px;
+    margin-right: 16px;
+    border-radius: 0 0px 4px 4px;
+    font-weight: bold;
+    z-index: 1;
+    overflow: visible; 
+}
+
+.popular-tag::before,
+.popular-tag::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+/* Left triangle (now on the left side) */
+.popular-tag::before {
+    top: -10px; /* Move it above the tag */
+    left: 0; /* Align to the left of the tag */
+    border-width: 10px 10px 0 0; /* Creates the right triangle (pointing left) */
+    border-color:  transparent var(--primary-color) transparent transparent; /* Adjust colors for the left triangle */
+    transform: translate(-100% ,+100%);
+}
+
+/* Right triangle (now on the right side) */
+.popular-tag::after {
+    top: -10px; /* Move it above the tag */
+    right: 0; /* Align to the right of the tag */
+    border-width: 0 10px 10px 0; /* Creates the left triangle (pointing right) */
+    border-color: transparent  transparent var(--primary-color) transparent; /* Adjust colors for the right triangle */
+    transform: translate(+100% ,+100%);
+}
+
+.standard-price-label {
+    font-size: 14px; /* Adjust font size */
+    color: var(--text-color); 
+    margin-top: 5px; /* Spacing from the above elements */
+    margin-left: 36px;
+}
+
+
+.unit-text {
+    font-weight: bold; /* Make the text bold */
+    font-size: 17px; /* Adjust the font size as needed */
+    color: var(--text-color); /* Use your defined text color variable */
+    padding: 4px 8px; /* Add some padding around the text */
+    display: inline-block; /* Make it inline-block for better control of spacing */
+    margin: 0; /* Reset margin if needed */
+}
+
+
+.discount-tag {
+    display: inline-block;
+    background-color:var(--primary-color);
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    font-weight: bold;
+}
+
+.option-selectors {
+    display: grid;
+    grid-template-columns: 0fr 0fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.select-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.select-wrapper label {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.size-select, .color-select {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.order-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    font-size: 14px;
+}
+
+.delivery-info {
+    color: var(--primary-color);
+    font-size:medium;
+}
+
+.total-price {
+    font-weight: bold;
+}
+
+.add-to-cart-btn {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+
+.plus-symbol {
+    color: white; /* Make the plus symbol white */
+    font-size: 20px; /* Optional: adjust the size of the plus symbol */
+    margin-right: 15px; /* Add some space between the plus symbol and the text */
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+.size-row,
+.color-row {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    margin-bottom: 8px; /* Space between rows */
+}
+
+.size-row span {
+    margin-right: 6px; /* Space between the span and select */
+    size: 10px;
+    color: var(--text-muted);
+}
+
+.size-select, 
+.color-select {
+    flex-grow: 1; /* Allow select to fill the available space */
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+@media (max-width: 480px) {
+    .card {
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .option-selectors {
+        grid-template-columns: 1fr;
+    }
+}
